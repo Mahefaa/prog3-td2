@@ -12,8 +12,7 @@ import lombok.Setter;
 @Setter
 public class MatchResponse {
   private Integer id;
-  private String teamHome;
-  private String teamOpponent;
+  private TeamResponse teamA;
+  private TeamResponse teamB;
   private LocalDateTime datetime;
-  private String stadium;
 }

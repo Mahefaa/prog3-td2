@@ -9,7 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,15 +36,7 @@ public class Team {
       inverseJoinColumns = @JoinColumn(name = "id_sponsor", referencedColumnName = "id")
   )
   private List<Sponsor> sponsors;
-  @OneToOne
-  @JoinTable(
-      name = "play_against",
-      joinColumns = {
-          @JoinColumn(name = "id_home", referencedColumnName = "id"),
-      },
-      inverseJoinColumns = {
-          @JoinColumn(name = "id_opponent", referencedColumnName = "id"),
-      }
-  )
-  private Team opponent;
+  @OneToMany(mappedBy = "team")
+  @OrderBy("number")
+  private List<Player> players;
 }

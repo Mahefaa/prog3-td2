@@ -14,5 +14,5 @@ public class TeamResponse {
   private Integer id;
   private String name;
   private List<String> sponsors;
-  private String opponent;
+  private List<PlayerResponse> players;
 }

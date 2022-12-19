@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
@@ -23,12 +23,12 @@ public class Match {
   @Id
   @GeneratedValue(strategy = IDENTITY)
   private int id;
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "id_home")
-  private Team home;
-  @OneToOne
+  private Team teamA;
+  @ManyToOne
   @JoinColumn(name = "id_opponent")
-  private Team opponent;
+  private Team teamB;
   private LocalDateTime datetime;
   private String stadium;
 }
